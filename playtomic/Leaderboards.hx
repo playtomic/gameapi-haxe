@@ -16,7 +16,7 @@ class Leaderboards
 	private static inline var SECTION:String = "leaderboards";
 	private static inline var SAVEANDLIST:String = "saveandlist";
 	private static inline var SAVE:String = "save";
-	private static inline var LIST:String = "list"
+	private static inline var LIST:String = "list";
 	
 	/**
 	 * Performs a save and a list in a single request that returns the player's score and page of scores it occured on
@@ -37,7 +37,7 @@ class Leaderboards
 	 * @param	score		The player's score as a Score (extends Object)
 	 * @param	callback	Callback function to receive the data:  function(score:PlayerScore, response:Response)
 	 */
-	public static function save(score:Object, callback:Response->Void = null) {
+	public static function save(score:Dynamic, callback:Response->Void = null) {
 		ServiceRequest.load(SECTION, SAVE, score, function(data:Dynamic, response:Response) { 
 			if(callback == null)
 				return;
@@ -51,7 +51,7 @@ class Leaderboards
 	 * @param	options		The leaderboard options, check the documentation at http://playtomic.com/api/as3#Leaderboards
 	 * @param	callback	Callback function to receive the data:  function(scores:Array, numscores:int, response:Response)
 	 */
-	public static function list(options:Object, callback:Array<Dynamic>->Int->Response->Void) {
+	public static function list(options:Dynamic, callback:Array<Dynamic>->Int->Response->Void) {
 		ServiceRequest.load(SECTION, LIST, options, function(data:Dynamic, response:Response) { 
 			if(callback == null)
 				return;

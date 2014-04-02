@@ -105,7 +105,7 @@ class PlayerLevels
 	 * @param	callback		Your function to receive the response:  function(response:Response)
 	 * @param	options			The list options, see http://playtomic.com/api/as3#PlayerLevels
 	 */
-	public static function list(options:Object = null, callback:Array<Dynamic>->Int->Response->Void = null) {			
+	public static function list(options:Dynamic = null, callback:Array<Dynamic>->Int->Response->Void = null) {			
 		if(options == null)
 			options = new Object();
 			
