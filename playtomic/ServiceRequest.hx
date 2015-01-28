@@ -5,7 +5,6 @@ import flash.net.URLLoader;
 import flash.net.URLRequest;
 import flash.net.URLVariables;
 import flash.system.Security;	
-import haxe.io.Error;
 import haxe.Json;
 /**
  * ...
