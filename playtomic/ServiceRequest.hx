@@ -5,6 +5,7 @@ import flash.net.URLLoader;
 import flash.net.URLRequest;
 import flash.net.URLVariables;
 import flash.system.Security;	
+import haxe.io.Error;
 import haxe.Json;
 /**
  * ...
@@ -51,8 +52,16 @@ class ServiceRequest
 		var complete = function(e:Event)  {
 			Debug.log("[Playtomic.ServiceRequest.Complete] Service request completed (" + section + " -> " + action + ")");
 			
-			var data:Dynamic = Json.parse(request.data);
-			handler(data, new Response(data.success, data.errorcode));
+			try
+			{
+				var data:Dynamic = Json.parse(request.data);
+				handler(data, new Response(data.success, data.errorcode));
+			}
+			catch ( e:Dynamic )
+			{
+				Debug.log("[Playtomic.ServiceRequest.Error] JSON failed");
+				handler({}, FailResponse);
+			}
 		}
 		
 		var fail = function(e:Event) {
